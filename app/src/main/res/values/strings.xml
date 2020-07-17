@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Internship Application</string>
+    <string name="input">Please enter something</string>
+    <string name="push_me_btn">Push me</string>
+    <string name="btn_ok">OK</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="toast_empty_field">I said, PLEASE enter something</string>
+    <string name="toast_result_success">Success!</string>
 </resources>
