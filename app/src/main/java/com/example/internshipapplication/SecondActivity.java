@@ -22,21 +22,23 @@ public class SecondActivity extends AppCompatActivity {
         textView.setText(message);
 
 
-        AppCompatButton btnOk = (AppCompatButton) findViewById(R.id.btn_ok);
+        AppCompatButton btnOk = findViewById(R.id.btn_ok);
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
                 setResult(RESULT_OK, intent);
+                finish();
             }
         });
 
-        AppCompatButton btnCancel = (AppCompatButton) findViewById(R.id.btn_cancel);
+        AppCompatButton btnCancel = findViewById(R.id.btn_cancel);
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
                 setResult(RESULT_CANCELED, intent);
+                finish();
             }
         });
     }

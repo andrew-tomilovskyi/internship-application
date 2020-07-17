@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        input = (AppCompatEditText) findViewById(R.id.input);
-        btn = (AppCompatButton) findViewById(R.id.btn);
+        input = findViewById(R.id.input);
+        btn = findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == SECOND_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
+                Objects.requireNonNull(input.getText()).clear();
                 Toast.makeText(getApplicationContext(), R.string.toast_result_success, Toast.LENGTH_LONG).show();
             } else if (resultCode == RESULT_CANCELED) {
                 Objects.requireNonNull(input.getText()).clear();
