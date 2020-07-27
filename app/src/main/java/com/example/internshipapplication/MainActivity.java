@@ -1,24 +1,24 @@
 package com.example.internshipapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatEditText;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
+import android.widget.Toolbar;
+
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatEditText;
 
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     public static final String EXTRA_MESSAGE = "com.example.internshipapplication.MESSAGE";
     public static final int SECOND_ACTIVITY_REQUEST_CODE = 42;
 
-    AppCompatEditText input;
-    AppCompatButton btn;
+    private AppCompatEditText input;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         input = findViewById(R.id.input);
-        btn = findViewById(R.id.btn);
+        AppCompatButton btn = findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        initToolbar(getString(R.string.app_name));
+
     }
 
     @Override
