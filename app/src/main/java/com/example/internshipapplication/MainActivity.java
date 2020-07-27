@@ -14,9 +14,6 @@ import java.util.Objects;
 
 public class MainActivity extends BaseActivity {
 
-    public static final String EXTRA_MESSAGE = "com.example.internshipapplication.MESSAGE";
-    public static final int SECOND_ACTIVITY_REQUEST_CODE = 42;
-
     private AppCompatEditText input;
     private Toolbar toolbar;
 
@@ -36,8 +33,8 @@ public class MainActivity extends BaseActivity {
                 if (TextUtils.isEmpty(input.getText().toString())) {
                     Toast.makeText(getApplicationContext(), R.string.toast_empty_field, Toast.LENGTH_LONG).show();
                 } else {
-                    intent.putExtra(EXTRA_MESSAGE, message);
-                    startActivityForResult(intent, SECOND_ACTIVITY_REQUEST_CODE);
+                    intent.putExtra(Constants.EXTRA_MESSAGE, message);
+                    startActivityForResult(intent, Constants.SECOND_ACTIVITY_REQUEST_CODE);
                 }
             }
         });
@@ -50,7 +47,7 @@ public class MainActivity extends BaseActivity {
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == SECOND_ACTIVITY_REQUEST_CODE) {
+        if (requestCode == Constants.SECOND_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 Objects.requireNonNull(input.getText()).clear();
                 Toast.makeText(getApplicationContext(), R.string.toast_result_success, Toast.LENGTH_LONG).show();
