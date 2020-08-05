@@ -17,4 +17,10 @@
         <item name="android:textColorPrimary">@android:color/white</item>
     </style>
 
+
+    <style name="AppButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:backgroundTint">@color/colorAccent</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 </resources>

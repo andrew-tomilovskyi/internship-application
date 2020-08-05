@@ -2,15 +2,16 @@ package com.example.internshipapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
 
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
 
 public class SecondActivity extends BaseActivity {
 
-    private Toolbar toolbar;
+    private FragmentViewer fragmentViewer;
+    private CarModel carModel;
+    private AppCompatTextView textView;
+    private AppCompatImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,32 +19,16 @@ public class SecondActivity extends BaseActivity {
         setContentView(R.layout.second_activity);
 
         initToolbarWithNavigation(getString(R.string.app_name));
-        getMenuInflater();
 
-        Intent intent = getIntent();
-        String message = intent.getStringExtra(Constants.EXTRA_MESSAGE);
+        fragmentViewer = (FragmentViewer) getSupportFragmentManager().findFragmentById(R.id.fragment_two);
 
-        TextView textView = findViewById(R.id.textView);
-        textView.setText(message);
+        carModel = getIntent().getParcelableExtra(Constants.EXTRA_CAR);
 
-        AppCompatButton btnOk = findViewById(R.id.btn_ok);
-        btnOk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                setResult(RESULT_OK, intent);
-                finish();
-            }
-        });
+        textView = findViewById(R.id.car_info);
+        textView.setText(carModel.toString());
 
-        AppCompatButton btnCancel = findViewById(R.id.btn_cancel);
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                setResult(RESULT_CANCELED, intent);
-                finish();
-            }
-        });
+        imageView = findViewById(R.id.car_photo);
+        imageView.setImageResource(carModel.carPhoto);
+
     }
 }

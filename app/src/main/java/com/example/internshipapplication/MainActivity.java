@@ -2,59 +2,70 @@ package com.example.internshipapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatEditText;
-
-import java.util.Objects;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
 
 public class MainActivity extends BaseActivity {
 
-    private AppCompatEditText input;
-    private Toolbar toolbar;
+    boolean inLandscapeMode;
+    private FragmentChooser fragmentChooser;
+    private FragmentViewer fragmentViewer;
+    private AppCompatTextView textView;
+    private AppCompatImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        input = findViewById(R.id.input);
-        AppCompatButton btn = findViewById(R.id.btn);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
-                String message = Objects.requireNonNull(input.getText()).toString();
-
-                if (TextUtils.isEmpty(input.getText().toString())) {
-                    Toast.makeText(getApplicationContext(), R.string.toast_empty_field, Toast.LENGTH_LONG).show();
-                } else {
-                    intent.putExtra(Constants.EXTRA_MESSAGE, message);
-                    startActivityForResult(intent, Constants.SECOND_ACTIVITY_REQUEST_CODE);
-                }
-            }
-        });
-
         initToolbar(getString(R.string.app_name));
+
+        inLandscapeMode = findViewById(R.id.fragment_two) != null;
+
+        fragmentChooser = (FragmentChooser) getSupportFragmentManager().findFragmentById(R.id.fragment_one);
+        if (inLandscapeMode) {
+            fragmentViewer = (FragmentViewer) getSupportFragmentManager().findFragmentById(R.id.fragment_two);
+        }
 
     }
 
-    @Override
-    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    public void openLadaInfo() {
+        if (inLandscapeMode) {
+            imageView = findViewById(R.id.car_photo);
+            imageView.setImageResource(R.drawable.lada_sedan);
+            textView = findViewById(R.id.car_info);
+            textView.setText("Car: Lada 2106");
 
-        if (requestCode == Constants.SECOND_ACTIVITY_REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
-                Objects.requireNonNull(input.getText()).clear();
-                Toast.makeText(getApplicationContext(), R.string.toast_result_success, Toast.LENGTH_LONG).show();
-            } else if (resultCode == RESULT_CANCELED) {
-                Objects.requireNonNull(input.getText()).clear();
-            }
+        } else {
+            Intent carIntent = new Intent(MainActivity.this, SecondActivity.class);
+            carIntent.putExtra(Constants.EXTRA_CAR, new CarModel("Lada 2106", 80, 150, "Deep Purple", 1976, R.drawable.lada_sedan));
+            startActivity(carIntent);
         }
+    }
+
+    public void openHondaInfo() {
+        Intent carIntent = new Intent(MainActivity.this, SecondActivity.class);
+        carIntent.putExtra(Constants.EXTRA_CAR, new CarModel("Honda Accord", 281, 230, "Space Grey", 2020, R.drawable.honda_accord));
+        startActivity(carIntent);
+    }
+
+    public void openAudiInfo() {
+        Intent carIntent = new Intent(MainActivity.this, SecondActivity.class);
+        carIntent.putExtra(Constants.EXTRA_CAR, new CarModel("Audi A7", 340, 250, "Royal Blue", 2020, R.drawable.audi_a7));
+        startActivity(carIntent);
+    }
+
+    public void openPorscheInfo() {
+        Intent carIntent = new Intent(MainActivity.this, SecondActivity.class);
+        carIntent.putExtra(Constants.EXTRA_CAR, new CarModel("Porsche Taycan", 625, 260, "Ice Blue", 2019, R.drawable.porsche_taycan));
+        startActivity(carIntent);
+    }
+
+    public void openTeslaInfo() {
+        Intent carIntent = new Intent(MainActivity.this, SecondActivity.class);
+        carIntent.putExtra(Constants.EXTRA_CAR, new CarModel("Tesla Model S", 762, 250, "Red", 2017, R.drawable.tesla));
+        startActivity(carIntent);
     }
 
 }

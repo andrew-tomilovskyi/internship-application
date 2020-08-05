@@ -12,4 +12,12 @@
     <string name="toast_search">What are you looking for?</string>
     <string name="toast_settings">There is nothing to configure. Sorry.</string>
     <string name="toast_help">Self-help is the best help.</string>
+    <string name="btn_lada_sedan">Lada Sedan</string>
+    <string name="btn_honda_accord">Honda Accord</string>
+    <string name="btn_audi_a7">Audi A7</string>
+    <string name="btn_porsche_taycan">Porsche Taycan</string>
+    <string name="btn_tesla_model_s">Tesla Model S</string>
+    <string name="car_name_textview">Name</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
