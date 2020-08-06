@@ -13,7 +13,6 @@ public class FragmentViewer extends Fragment {
 
     private AppCompatImageView carPhoto;
     private AppCompatTextView carInfo;
-    private CarModel carBlyat;
 
     public FragmentViewer() {
         // Required empty public constructor
@@ -35,5 +34,9 @@ public class FragmentViewer extends Fragment {
         return v;
     }
 
+    public void showCar(CarModel carModel) {
+        carPhoto.setImageResource(carModel.carPhoto);
+        carInfo.setText(carModel.toString());
+    }
 
 }

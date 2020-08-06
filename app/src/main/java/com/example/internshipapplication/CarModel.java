@@ -40,27 +40,21 @@ public class CarModel implements Parcelable {
     }
 
     public String getCarName() { return carName; }
-
     public void setCarName(String carName) { this.carName = carName; }
 
     public int getCarHorsePower() { return carHorsePower; }
-
     public void setCarHorsePower(int carHorsePower) { this.carHorsePower = carHorsePower; }
 
     public int getCarMaxSpeed() { return  carMaxSpeed; }
-
     public void setCarMaxSpeed(int carMaxSpeed) { this.carMaxSpeed = carMaxSpeed; }
 
     public String getCarColor() {return carColor; }
-
     public void setCarColor(String carColor) { this.carColor = carColor; }
 
     public int getCarYear() { return carYear; }
-
     public void setCarYear(int carYear) { this.carYear = carYear; }
 
     public int getCarPhoto() { return carPhoto; }
-
     public void setCarPhoto(int carPhoto) { this.carPhoto = carPhoto; }
 
     @NonNull

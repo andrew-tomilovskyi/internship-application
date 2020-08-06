@@ -29,6 +29,5 @@ public class SecondActivity extends BaseActivity {
 
         imageView = findViewById(R.id.car_photo);
         imageView.setImageResource(carModel.carPhoto);
-
     }
 }
